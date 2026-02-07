@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>Valentine Question</title>
+
+  <style>
+
+    body {
+
+      font-family: 'Arial', sans-serif;
+
+      text-align: center;
+
+      padding: 50px;
+
+      background: #ffe6f0;
+
+      color: #d63384;
+
+    }
+
+    button {
+
+      background: #ff4da6;
+
+      color: white;
+
+      border: none;
+
+      padding: 10px 20px;
+
+      font-size: 18px;
+
+      margin: 10px;
+
+      border-radius: 10px;
+
+      cursor: pointer;
+
+      transition: 0.3s;
+
+    }
+
+    button:hover {
+
+      background: #ff1a75;
+
+    }
+
+    #result {
+
+      font-size: 24px;
+
+      margin-top: 30px;
+
+    }
+
+    .bear-image {
+
+      width: 150px;
+
+      margin: 10px;
+
+      display: inline-block;
+
+      transition: transform 0.3s;
+
+    }
+
+    .bear-image:hover {
+
+      transform: scale(1.1);
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <h1>💌 Will you  my little Valentine , for the week? 💌</h1>
+
+  <button onclick="askValentine()">Ask!</button>
+
+  <div id="question"></div>
+
+  <div id="result"></div>
+
+  <div id="bears"></div>
+
+  <script>
+
+    const name = "Quéoraa Jacinthan" ; // Prénom déjà défini
+
+    function askValentine() {
+
+      const questionDiv = document.getElementById('question');
+
+      questionDiv.innerHTML = `💖 Hey ${name}, Tu veut
+      être ma valentine 💖`;
+
+      // Clear previous result and bears
+
+      document.getElementById('result').innerHTML = "";
+
+      document.getElementById('bears').innerHTML = "";
+
+      // Create Yes and No buttons
+
+      const yesButton = document.createElement('button');
+
+      yesButton.innerText = "Yes";
+
+      yesButton.onclick = () => showResult('yes');
+
+      const noButton = document.createElement('button');
+
+      noButton.innerText = "No";
+
+      noButton.onclick = () => showResult('no');
+
+      questionDiv.appendChild(document.createElement('br'));
+
+      questionDiv.appendChild(yesButton);
+
+      questionDiv.appendChild(noButton);
+
+    }
+
+    function showResult(response) {
+
+      const resultDiv = document.getElementById('result');
+
+      const bearsDiv = document.getElementById('bears');
+
+      bearsDiv.innerHTML = ""; // clear bears
+
+      if(response === 'yes') {
+
+        resultDiv.innerHTML = `🥰 Yay, ${name}! I'm so happy! 🥰`;
+
+        // Add teddy bear images with hearts
+
+        const bearUrls = [
+
+          "https://i.postimg.cc/qvXf2n5P/teddy1.png",
+
+          "https://i.postimg.cc/T3s2TzTf/teddy2.png",
+
+          "https://i.postimg.cc/ZR7fYt8b/teddy3.png"
+
+        ];
+
+        bearUrls.forEach(url => {
+
+          const img = document.createElement('img');
+
+          img.src = url;
+
+          img.className = 'bear-image';
+
+          bearsDiv.appendChild(img);
+
+        });
+
+      } else {
+
+        resultDiv.innerHTML = `😢 Oh ${name}... maybe next time 😢`;
+
+      }
+
+      // Remove buttons
+
+      document.getElementById('question').innerHTML = "";
+
+    }
+
+  </script>
+
+</body>
+
+</html>
